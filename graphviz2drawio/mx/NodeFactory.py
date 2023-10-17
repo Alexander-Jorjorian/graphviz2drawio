@@ -59,6 +59,7 @@ class NodeFactory:
             elif current_text is not None:
                 texts.append(current_text)
                 current_text = None
+        print(g)
         if current_text is not None:
             texts.append(current_text)
         if SVG.has(g, "polygon"):
