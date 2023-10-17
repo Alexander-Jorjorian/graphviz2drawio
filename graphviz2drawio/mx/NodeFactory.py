@@ -51,7 +51,7 @@ class NodeFactory:
         x = float(text.attrib["x"])
         y = float(text.attrib["y"])
         text_content = text.text
-        font_size = int(text.attrib.get("font-size", 12))
+        font_size = int(float(text.attrib.get("font-size", 12)))
         font = ImageFont.truetype("arial.ttf", int(font_size))
         width, height = font.getsize(text_content)
         x, y = self.coords.translate(x, y)
