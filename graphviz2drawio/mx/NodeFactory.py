@@ -78,6 +78,8 @@ class NodeFactory:
         else:
             if SVG.has(g, "text"):
                 rect = self.rect_from_text(SVG.get_first(g, "text"))
+            else:
+                raise RuntimeError("Unknown SVG tag in node")
 
         stroke = None
         if SVG.has(g, "polygon"):
