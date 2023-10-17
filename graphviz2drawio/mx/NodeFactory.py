@@ -60,6 +60,8 @@ class NodeFactory:
                 texts.append(current_text)
                 current_text = None
         print(SVG.get_title(g))
+        for t in g.iter():
+            print(t.tag)
         if current_text is not None:
             texts.append(current_text)
         if SVG.has(g, "polygon"):
