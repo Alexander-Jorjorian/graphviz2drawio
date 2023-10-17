@@ -51,9 +51,9 @@ class NodeFactory:
         x = float(text.attrib["x"])
         y = float(text.attrib["y"])
         text_content = text.text
-        font_size = int(float(text.attrib.get("font-size", 12)))
-        font = ImageFont.truetype("arial.ttf", int(font_size))
-        width, height = font.getsize(text_content)
+        char_width = 6  # Assume each character takes up 6 units of width
+        width = (len(text_content) * char_width) + 40
+        height = 40
         x, y = self.coords.translate(x, y)
         return Rect(x=x, y=y, width=width, height=height)
 
