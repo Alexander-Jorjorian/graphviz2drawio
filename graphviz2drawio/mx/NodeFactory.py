@@ -59,7 +59,7 @@ class NodeFactory:
             elif current_text is not None:
                 texts.append(current_text)
                 current_text = None
-        print(g)
+        print(SVG.get_title(g))
         if current_text is not None:
             texts.append(current_text)
         if SVG.has(g, "polygon"):
@@ -68,7 +68,6 @@ class NodeFactory:
             rect = self.rect_from_image(SVG.get_first(g, "image").attrib)
         elif SVG.has(g, "ellipse"):
             rect = self.rect_from_ellipse_svg(SVG.get_first(g, "ellipse").attrib)
-
         else:
             raise RuntimeError("Unknown SVG tag in node")
 
