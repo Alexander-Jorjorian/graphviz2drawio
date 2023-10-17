@@ -38,10 +38,16 @@ class MxGraph:
             self.add_mx_geo_with_points(edge_element, edge.curve)
 
     def get_edge_source_target(self, edge):
-        if edge.dir == DotAttr.BACK:
-            return self.nodes[edge.to], self.nodes[edge.fr]
-        else:
-            return self.nodes[edge.fr], self.nodes[edge.to]
+        print(f"All available nodes: {self.nodes.keys()}")  # Debug line
+        print(f"Trying to find edge from {edge.fr} to {edge.to}")  # Debug line
+        try:
+            if edge.dir == DotAttr.BACK:
+                return self.nodes[edge.to], self.nodes[edge.fr]
+            else:
+                return self.nodes[edge.fr], self.nodes[edge.to]
+        except KeyError as e:
+            print(f"KeyError for {e}")  # Debug line
+            raise
 
     def get_edge_style(self, edge, source_node, target_node):
         end_arrow = MxConst.BLOCK

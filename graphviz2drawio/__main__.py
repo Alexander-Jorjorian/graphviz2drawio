@@ -16,18 +16,6 @@ def main():
         output = convert(args.to_convert, args.program)
     except BaseException:
         stderr.write("Something went wrong, please report\n")
-        stderr.write(
-            "An automatic crash report can be sent to the developer (no personal or graph information)\n"
-        )
-        permission = input("Type 'no' to cancel report, press enter to send: ")
-        if permission != "no":
-            from raven import Client
-
-            client = Client(
-                dsn="https://f1fce21b51864819a26ea116ff4e5b7f:9f61501e4891465ea53e0416e5f402b1@sentry.io/1266157",
-                release=__version__,
-            )
-            client.captureException()
         raise
 
     if args.stdout:
