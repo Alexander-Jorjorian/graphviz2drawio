@@ -50,6 +50,7 @@ class NodeFactory:
     def rect_from_text(self, text):
         x = float(text.attrib["x"])
         y = float(text.attrib["y"])
+        x, y = self.coords.translate(x, y)
         return Rect(x=x, y=y, width=10, height=0)
 
     def from_svg(self, g):
