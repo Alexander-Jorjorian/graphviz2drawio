@@ -2,7 +2,7 @@ from graphviz2drawio.models import SVG
 from graphviz2drawio.models.Rect import Rect
 from .Node import Node
 from .Text import Text
-
+from PIL import ImageFont
 
 class NodeFactory:
     def __init__(self, coords):
@@ -50,8 +50,12 @@ class NodeFactory:
     def rect_from_text(self, text):
         x = float(text.attrib["x"])
         y = float(text.attrib["y"])
+        text_content = text.text
+        font_size = int(text.attrib.get("font-size", 12))
+        font = ImageFont.truetype("arial.ttf", font_size)
+        width, height = font.getsize(text_content)
         x, y = self.coords.translate(x, y)
-        return Rect(x=x, y=y, width=10, height=10)
+        return Rect(x=x, y=y, width=width, height=height)
 
     def from_svg(self, g):
         texts = []
