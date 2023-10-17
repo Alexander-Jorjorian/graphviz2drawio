@@ -124,6 +124,8 @@ class MxGraph:
         geo = ET.SubElement(element, MxConst.GEO, {"as": "geometry"}, relative="1")
 
         # cbset
+        cb= None
+        array = None
         if len(curve.cbset) > 0:
             array = ET.SubElement(geo, MxConst.ARRAY, {"as": "points"})
         for cb in curve.cbset:
