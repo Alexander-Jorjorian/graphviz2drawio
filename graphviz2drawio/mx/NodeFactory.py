@@ -51,7 +51,7 @@ class NodeFactory:
         x = float(text.attrib["x"])
         y = float(text.attrib["y"])
         x, y = self.coords.translate(x, y)
-        return Rect(x=x, y=y, width=10, height=0)
+        return Rect(x=x, y=y, width=10, height=10)
 
     def from_svg(self, g):
         texts = []
