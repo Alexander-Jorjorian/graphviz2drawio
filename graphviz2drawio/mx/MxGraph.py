@@ -40,6 +40,10 @@ class MxGraph:
     def get_edge_source_target(self, edge):
         print(f"All available nodes: {self.nodes.keys()}")  # Debug line
         print(f"Trying to find edge from {edge.fr} to {edge.to}")  # Debug line
+        if edge.fr not in self.nodes or edge.to not in self.nodes:
+            print(f"Missing nodes for edge from {edge.fr} to {edge.to}")  # Debug line
+            # handle the situation gracefully, perhaps skip this edge
+            return None, None
         try:
             if edge.dir == DotAttr.BACK:
                 return self.nodes[edge.to], self.nodes[edge.fr]
