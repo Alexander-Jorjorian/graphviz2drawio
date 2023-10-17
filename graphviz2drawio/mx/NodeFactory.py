@@ -77,7 +77,7 @@ class NodeFactory:
             rect = self.rect_from_ellipse_svg(SVG.get_first(g, "ellipse").attrib)
         else:
             if SVG.has(g, "text"):
-                rect = self.rect_from_text(SVG.get_first(g, "text").attrib)
+                rect = self.rect_from_text(SVG.get_first(g, "text"))
             else:
                 raise RuntimeError("Unknown SVG tag in node")
 
