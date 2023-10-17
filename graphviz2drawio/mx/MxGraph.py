@@ -21,6 +21,10 @@ class MxGraph:
 
     def add_edge(self, edge):
         source, target = self.get_edge_source_target(edge)
+        print(f"Source: {source}, Target: {target}")
+        if source is None or target is None:
+            print(f"Skipping edge due to missing source/target")  # Debug line
+            return
         style = self.get_edge_style(edge, source, target)
         edge_element = ET.SubElement(
             self.root,
