@@ -42,7 +42,6 @@ class MxGraph:
             self.add_mx_geo_with_points(edge_element, edge.curve)
 
     def get_edge_source_target(self, edge):
-        print(f"All available nodes: {self.nodes.keys()}")  # Debug line
         print(f"Trying to find edge from {edge.fr} to {edge.to}")  # Debug line
         if edge.fr not in self.nodes or edge.to not in self.nodes:
             print(f"Missing nodes for edge from {edge.fr} to {edge.to}")  # Debug line
