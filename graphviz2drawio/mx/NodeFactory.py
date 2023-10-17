@@ -47,6 +47,11 @@ class NodeFactory:
         x, y = self.coords.translate(cx, cy)
         return Rect(x=x - rx, y=y - ry, width=rx * 2, height=ry * 2)
 
+    def rect_from_text(self, text):
+        x = float(text.attrib["x"])
+        y = float(text.attrib["y"])
+        return Rect(x=x, y=y, width=0, height=0)
+
     def from_svg(self, g):
         texts = []
         current_text = None
@@ -71,6 +76,8 @@ class NodeFactory:
         elif SVG.has(g, "ellipse"):
             rect = self.rect_from_ellipse_svg(SVG.get_first(g, "ellipse").attrib)
         else:
+            if SVG.has(g, "text"):
+                rect = self.rect_from_text(SVG.get_first(g, "text"))
             raise RuntimeError("Unknown SVG tag in node")
 
         stroke = None
